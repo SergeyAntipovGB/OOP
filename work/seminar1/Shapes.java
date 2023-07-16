@@ -26,5 +26,13 @@ public class Shapes {
         t2.showStyle();
         t2.showDim();
         System.out.println("Площадь " + t2.area());
+        
+        System.out.println("Информация о t3 ");
+        t3.showDim();
+
+        System.out.println("Информация о t4 ");
+        t4.showStyle();
+        t2.showDim();
+        System.out.println("Площадь " + t2.area());
     }
 }
