@@ -1,8 +1,8 @@
 package home.lesson2.task1;
 
 public class Rectangle extends Line implements Stateble, Printable, Geometry, Color, Size {
-    // поле width, методы getWidth и setWidth наследуются из класса Line
-    double height;
+
+    private double height;
     
     public double getHeight() {
         return height;
@@ -12,42 +12,38 @@ public class Rectangle extends Line implements Stateble, Printable, Geometry, Co
         this.height = height;
     }
 
-    // перегрузка метода setWidth() класса Line
     public void setWidth(double width) {
         this.width = width;
     }
 
     public Rectangle() {
-        this.width = WIDTHSTATIC;
+        super.width = WIDTHSTATIC;
         this.height = HEIGHTSTATIC;
     }
 
     public Rectangle(double length) {
-        this.width = length;
+        super.width = length;
         this.height = length;
     }
 
     public Rectangle(double width, double height) {
-        this.width = width;
+        super.width = width;
         this.height = height;
     }
 
-    // переопределение метода calculateArea() класса Geometry
     @Override
     public double calculateArea() {
-        return width * height;
+        return getWidth() * getHeight();
     }
     
-    // переопределение метода calculatePerimeter() класса Geometry
     @Override
     public double calculatePerimeter() {
-        return (width + height) * MULTIPLIER;
+        return (getWidth() + getHeight()) * MULTIPLIER;
     }
 
-    // переопределение метода CalculateDiagonal() класса Geometry
     @Override
     public double CalculateDiagonal() {
-        return Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+        return Math.sqrt(Math.pow(getWidth(), 2) + Math.pow(getHeight(), 2));
     }
 
     @Override
@@ -57,7 +53,11 @@ public class Rectangle extends Line implements Stateble, Printable, Geometry, Co
 
     @Override
     public void setColor() {
-        System.out.println("none color");;
+        System.out.println("Setting silver color");;
     }
 
+    @Override
+    public void printRes() {
+        System.out.printf("\nRectangle (Width: %.1f; Height: %.1f)\nArea: %.2f, Perimeter: %.2f\n", getWidth(), getHeight(), calculateArea(), calculatePerimeter());
+    }
 }
