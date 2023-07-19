@@ -2,6 +2,10 @@ package new;
 
 public class Main {
     public static void main(String[] args) {
-        privat int variable;
+        int variable = 10;
+
+        public int getVariable(){
+            return variable;
+        }
     }
 }
