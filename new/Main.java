@@ -1,5 +1,7 @@
 package new;
 
 public class Main {
-    
+    public static void main(String[] args) {
+        privat int variable;
+    }
 }
