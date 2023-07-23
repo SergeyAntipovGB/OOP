@@ -16,7 +16,6 @@ public class Main {
                 return num1 - num2;
             }
         });
-
         System.out.println(numbers); // Вывод: [1, 2, 3, 5, 8]
 
 // Вариант реализации компаратора через лямбду

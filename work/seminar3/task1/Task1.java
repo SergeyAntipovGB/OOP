@@ -2,8 +2,7 @@ package work.seminar3.task1;
 
 public class Task1 {
     public static void main(String[] args) {
-        IValue value;
-        value = () -> 98.6; // лямбда выражение
+        IValue value = () -> 98.6; // лямбда выражение
         System.out.println(value.getValue());
 
         IValue2 value2 = (x) -> 100 / x;

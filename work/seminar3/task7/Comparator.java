@@ -1,6 +1,6 @@
-package work.seminar3.task7;
+/*
 
-import java.util.Comparator;
+package work.seminar3.task7;
 
 public interface Comparator<T> {
     // Сравнивает два объекта типа T и возвращает отрицательное целое число, ноль или положительное целое число,
@@ -76,3 +76,5 @@ public interface Comparator<T> {
     // позволяет выполнить группировку с помощью компаратора.
     default Comparator<T> thenComparingBoolean(Predicate<? super T> keyExtractor) {
         return thenComparing(comparingBoolean
+
+*/
