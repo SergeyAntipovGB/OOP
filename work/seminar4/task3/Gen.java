@@ -12,7 +12,8 @@ class UseTest {
 
     // использование ограниченного шаблона
     // static void test(Gen<? super B> a) {
-    static void test(Gen<? extends A> a) {
+    static void test(Gen<?> parametr) {
+    // static void test(Gen<? extends A> parametr) {
         //
     }
 
