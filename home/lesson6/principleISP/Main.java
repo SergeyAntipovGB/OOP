@@ -1,10 +1,7 @@
-package work.seminar6.taskL;
+package home.lesson6.principleISP;
 
-interface Fetchable {
+interface AnimalAction {
     void fetch();
-}
-
-interface Scratchable {
     void scratch();
 }
 
@@ -12,7 +9,7 @@ abstract class Animal {
     public abstract void makeSound();
 }
 
-class Dog extends Animal implements Fetchable {
+class Dog extends Animal implements AnimalAction { // Метод scratch() не используется, но имплементируется
     @Override
     public void makeSound() {
         System.out.println("Dog barks.");
@@ -22,12 +19,22 @@ class Dog extends Animal implements Fetchable {
     public void fetch() {
         System.out.println("Dog fetches.");
     }
+
+    @Override
+    public void scratch() {
+        // No actions
+    }
 }
 
-class Cat extends Animal implements Scratchable {
+class Cat extends Animal implements AnimalAction { // Метод fetch() не используется, но имплементируется
     @Override
     public void makeSound() {
         System.out.println("Cat meows.");
+    }
+
+    @Override
+    public void fetch() {
+        // No actions
     }
 
     @Override
@@ -36,22 +43,12 @@ class Cat extends Animal implements Scratchable {
     }
 }
 
-public class MainExtend {
+public class Main {
     public static void main(String[] args) {
         Animal animal1 = new Dog();
         Animal animal2 = new Cat();
 
         animal1.makeSound(); // Вывод: Dog barks.
         animal2.makeSound(); // Вывод: Cat meows.
-
-        if (animal1 instanceof Fetchable) {
-            Fetchable dog = (Fetchable) animal1;
-            dog.fetch(); // Вывод: Dog fetches.
-        }
-
-        if (animal2 instanceof Scratchable) {
-            Scratchable cat = (Scratchable) animal2;
-            cat.scratch(); // Вывод: Cat scratches.
-        }
     }
 }

@@ -73,6 +73,3 @@ public class Main1 {
         soundManager.playAnimalSound(bird); // Вывод: Chirp!
     }
 }
-
-10:24
-
