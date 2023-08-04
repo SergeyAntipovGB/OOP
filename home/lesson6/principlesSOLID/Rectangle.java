@@ -1,6 +1,6 @@
 package home.lesson6.principlesSOLID;
 
-public class Rectangle {
+public class Rectangle implements Printer {
 
     int MULTIPLIER = 2;
     double HEIGHTSTATIC = 3;
@@ -40,12 +40,14 @@ public class Rectangle {
 
     CalculateArea area = (width, height) -> getWidth() * getHeight();
 
+    CalculatePerimeter perimeter = (width, height) -> (getWidth() + getHeight()) * MULTIPLIER;
+    
     public double getArea() {
         return area.calculateArea(width, height);
     }
-
-    CalculatePerimeter perimeter = (width, height) -> (getWidth() + getHeight()) * MULTIPLIER;
-
+    
+    // согласно принципу инверсии зависимостей и принципу открытости/закрытости метод printRes() вынесен в абстрактный интерфейс Printer, который имплементируется классом
+    @Override
     public void printRes() {
         System.out.printf("Width = %.2f, Height = %.2f, Area = %.2f\n", getWidth(), getHeight(), area.calculateArea(getWidth(), getHeight()));
     }

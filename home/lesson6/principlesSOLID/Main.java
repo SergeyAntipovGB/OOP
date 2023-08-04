@@ -6,8 +6,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // создаем список прямоугольников разного размера
+        
         List<Rectangle> rectangles = new ArrayList<>();
+
         rectangles.add(new Rectangle(20.5, 25.0));
         rectangles.add(new Rectangle(15.3, 11.5));
         rectangles.add(new Rectangle(4.6, 45.9));
@@ -22,7 +23,6 @@ public class Main {
             rectangle.printRes();
         }
 
-        // создаем компаратор сравнивающий размер площадей прямоугольников
         Comparator<Rectangle> areaComparator = (rectangle1, rectangle2) -> (int) (rectangle1.getArea() - rectangle2.getArea());
 
         rectangles.sort(areaComparator);

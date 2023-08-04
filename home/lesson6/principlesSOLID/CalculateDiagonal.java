@@ -1,4 +1,4 @@
-package home.lesson3.task1_2;
+package home.lesson6.principlesSOLID;
 
 public interface CalculateDiagonal {
     double calculateDiagonal(double width, double height);
