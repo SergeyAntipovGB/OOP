@@ -19,6 +19,11 @@ class Address {
         this.city = other.city;
         this.street = other.street;
     }
+
+    // @Override
+    // public String toString() {
+    //     return "city: " + city + ", street: " + street;
+    // }
 }
 
 class Person {
@@ -66,10 +71,11 @@ public class Main1 {
 
         // Копируем объект person1
         Person person2 = person1.copy();
+        // Person person2 = person1;
 
         // Изменяем поле в скопированном объекте
-        person2.setName("Bob");
-        person2.getAddress().setCity("CityB");
+        // person2.setName("Bob");
+        // person2.getAddress().setCity("CityB");
 
         // Выводим информацию об объектах
         System.out.println("Person 1: " + person1);
