@@ -1,4 +1,4 @@
-package home.lesson7;
+package home.calculator;
 
 import java.util.Scanner;
 

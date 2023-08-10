@@ -1,4 +1,4 @@
-package home.lesson7;
+package home.calculator;
 
 public class Calculator {
     public static void main(String[] args) {
