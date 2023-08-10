@@ -2,12 +2,12 @@ package Ex002Phonebook.Core.MVP;
 import Ex002Phonebook.Core.Models.Contact;
 public class Presenter {
     
-    private Model model;
+    private TwoOperands model;
     private View view;
 
     public Presenter(View view, String pathDb) {
         this.view = view;
-        model = new Model(pathDb);
+        model = new TwoOperands(pathDb);
     }
 
     public void LoadFromFile() {

@@ -4,7 +4,7 @@ public class PresenterOfT<T extends CalcModel> {
  
 
     View view;
-    Model model;
+    TwoOperands model;
 
     public PresenterOfT(T m, View v) {
         model = m;

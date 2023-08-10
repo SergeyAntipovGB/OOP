@@ -9,11 +9,11 @@ import Ex003Math.Mathematics.Exceptions.UnacceptableValueException;
 public class App {
     Presenter p;
     View ui;
-    Model model;
+    TwoOperands model;
 
     public App() {
         ui = new ConsoleView();
-        model = new Model(CalculateArea.getInstance(), "Без имени.jpg");
+        model = new TwoOperands(CalculateArea.getInstance(), "Без имени.jpg");
         p = new Presenter(ui, model);
     }
 

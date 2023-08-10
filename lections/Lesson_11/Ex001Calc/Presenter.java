@@ -2,9 +2,9 @@ package Ex001Calc;
 
 public class Presenter {
     View view;
-    Model model;
+    TwoOperands model;
 
-    public Presenter(Model m, View v) {
+    public Presenter(TwoOperands m, View v) {
         model = m;
         view = v;
     }

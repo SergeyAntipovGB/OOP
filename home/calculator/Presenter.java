@@ -9,7 +9,13 @@ public class Presenter {
         this.view = view;
     }
 
-    public void request() {
+    public void requestOperation() {
+
+
+
+    }
+    
+    public void requestExpression() {
         String operation = view.getOperation();
         double num1 = view.getOperand();
         double num2 = view.getOperand();

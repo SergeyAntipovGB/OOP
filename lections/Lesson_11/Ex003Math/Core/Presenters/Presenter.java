@@ -10,10 +10,10 @@ import Ex003Math.Mathematics.Shapes.Rectangle;
 import Ex003Math.Mathematics.Shapes.Shape;
 
 public class Presenter {
-    Model model;
+    TwoOperands model;
     View view;
 
-    public Presenter(View view, Model model) {
+    public Presenter(View view, TwoOperands model) {
         this.model = model;
         this.view = view;
     }

@@ -6,7 +6,6 @@ public class Calculator {
         View view = new View();
         Presenter presenter = new Presenter(model, view);
 
-        presenter.request();
-        presenter.request();
+        presenter.requestOperation();
     }
 }
