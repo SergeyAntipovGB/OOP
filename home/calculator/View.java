@@ -13,8 +13,8 @@ public class View {
         System.out.printf("\nРезультат: %.2f\n", result);
     }
 
-    public String getRequest() {
-        System.out.print("\nВведите выражение из двух чисел\n");
+    public String getRequestExpression() {
+        System.out.print(Phrases.REQUEST_EXPRESSION);
         return scanner.nextLine();
     }
 

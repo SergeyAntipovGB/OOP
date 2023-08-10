@@ -1,17 +1,21 @@
 package home.calculator;
 
 public class Exception {
-    private static boolean FlagIllegalArgument;
-    
-    public static void openFlag() {
-        FlagIllegalArgument = true;
-    }
+    private boolean FlagIllegalArgument;
 
-    public static void resetFlag() {
+    public Exception() {
         FlagIllegalArgument = false;
     }
-
-    public static boolean getFlag() {
+    
+    public void openFlag() {
+        FlagIllegalArgument = true;
+    }
+    
+    public void resetFlag() {
+        FlagIllegalArgument = false;
+    }
+    
+    public boolean getFlag() {
         return FlagIllegalArgument;
     }
 

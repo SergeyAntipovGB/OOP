@@ -15,7 +15,7 @@ public class TwoOperands extends BaseMath {
         if (num2 != 0) {
             result = num1 / num2;
         } else {
-            Exception.openFlag();
+            // Exception.openFlag();
             throw new IllegalArgumentException("На ноль делить нельзя!");
         }
     }
