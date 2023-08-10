@@ -8,6 +8,5 @@ public class Calculator {
 
         presenter.request();
         presenter.request();
-        presenter.request();
     }
 }

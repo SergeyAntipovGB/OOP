@@ -5,6 +5,10 @@ class Address {
     private String city;
     private String street;
     
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
     public void setCity(String city) {
         this.city = city;
     }
@@ -55,7 +59,7 @@ class Person {
 
     // Метод копирования
     public Person copy() {
-        return new Person(this);
+        return new Person("Bob", 50, address);
     }
 
     @Override
@@ -68,6 +72,8 @@ public class Main1 {
     public static void main(String[] args) {
         Address address = new Address("CityA", "StreetA");
         Person person1 = new Person("Alice", 30, address);
+        address.setStreet("StreetB");
+        address.setCity("CityB");
 
         // Копируем объект person1
         Person person2 = person1.copy();
