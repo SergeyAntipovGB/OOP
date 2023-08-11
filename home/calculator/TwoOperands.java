@@ -1,6 +1,8 @@
 package home.calculator;
 
 public class TwoOperands extends BaseMath {
+    private double num1;
+    private double num2;
     private double result;
 
     public void add(double num1, double num2) {

@@ -1,9 +1,16 @@
 package home.calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Presenter implements Phrases {
     private Model model;
     private View view;
 
+    /** Переменная - флаг для завершения программы.
+     * При инициации получает значение false. 
+     * Если значение меняется на true - программа завершается.
+     */
     Exit exit = new Exit();
 
     public Presenter(Model model, View view) {
@@ -27,16 +34,59 @@ public class Presenter implements Phrases {
         if (!exit.isExit()) requestExpression();
     }
     
-    /** Метод класса Presenter запрашивает действие и обрабатывает
-     * результат
+    /** Метод класса Presenter запрашивает арифметическое выражение
+     * и обрабатывает результат
      */
     public void requestOperation() {
         String operation = view.getRequest(REQUEST_OPERATION);
+        /* парсит выражение на два списка данных */
+        List<String> listNumbers = getNumbers(operation);
+        List<String> listSymbols = getSymbols(operation);
+        /* отправляет списки на вычисление */
+        Model calculate = new Model(listNumbers, listSymbols);
 
 
-        
+        // System.out.println(listNumbers);
+        // System.out.println(listSymbols);
+        // view.displayAlert(LOG);
     }
 
+    /** Метод парсит полученное выражение и возвращает
+     * список чисел для вычислений
+     * @param String s
+     * @return List<String> list
+     */
+    private static List<String> getNumbers(String s) {
+        /* устраняет лишние пробелы */
+        String[] arrNoSpaces = s.split(" ");
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String string : arrNoSpaces) {
+            stringBuilder.append(string);
+        }
+        /* формирование списка чисел */
+        List<String> list = new ArrayList<String>();
+        String[] array = stringBuilder.toString().split("[^.^\\w]");
+        for (String str: array) {
+            list.add(str);
+        }
+        return list;
+    }
+    
+    /** Метод парсит полученное выражение и возвращает
+     * список математических операций для вычислений
+     * @param String s
+     * @return List<String> list
+     */
+    private static List<String> getSymbols(String s) {
+        List<String> list = new ArrayList<String>();
+        String[] sArr = s.split("");
+        for (String i : sArr) {
+            if (i.equals("+") || i.equals("*") || i.equals("-") || i.equals("/")) {
+                list.add(i);
+            }
+        }
+        return list;
+    }
 
     /** Метод проверяет строку на возможность преобразования
      * в целое число
