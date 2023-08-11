@@ -1,5 +1,7 @@
 package home.calculator;
 
+/** Родительский класс математического процессора.
+ */
 public class BaseMath {
     private double result;
 

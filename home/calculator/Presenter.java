@@ -3,12 +3,17 @@ package home.calculator;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Класс является связующим звеном между
+ * функциональным классом Model и презентативным
+ * классом View. Управляет логикой взаимосвязей
+ * между классами и обменом данными.
+ */
 public class Presenter implements Phrases {
     private Model calculate;
     private View view;
 
-    /** Переменная - флаг для завершения программы.
-     * При инициации получает значение false. 
+    /** Объект класса Exit - флаг для завершения программы.
+     * При инициализации получает значение false. 
      * Если значение меняется на true - программа завершается.
      */
     Exit exit = new Exit();
@@ -131,7 +136,7 @@ public class Presenter implements Phrases {
         }
     }
 
-    /** Метод обработки пунктов меню
+    /** Метод обработки меню
      * @param position
      */
     public void performeExpression(int position) {

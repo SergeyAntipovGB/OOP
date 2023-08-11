@@ -2,12 +2,14 @@ package home.calculator;
 
 import java.util.Scanner;
 
+/** Класс, управляющий выводом/вводом
+ * данных в консоли
+ */
 public class View {
     private Scanner scanner;
 
-    /** Конструктор
-     *  объекта View()
-     */
+    /** Конструктор класса View()
+    */
     public View() {
         scanner = new Scanner(System.in);
     }
@@ -27,6 +29,11 @@ public class View {
         scanner.nextLine();
     }
 
+    /** Метод выводит на экран результат вычисления выражения
+     * и ожидает от пользователя нажатия клавиши <Enter>
+     * @param String operation
+     * @param double result
+     */
     public void displayResult(String operation, double result) {
         clearScreen();
         System.out.printf("%s = %.2f\n",operation, result);

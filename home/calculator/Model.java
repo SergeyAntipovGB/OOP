@@ -2,6 +2,9 @@ package home.calculator;
 
 import java.util.List;
 
+/** Класс обрабатывает логику произведения
+ * вычислений над данными
+ */
 public class Model {
     private List<String> numbers;
     private List<String> symbols;
@@ -24,12 +27,21 @@ public class Model {
         return numbers;
     }
 
+    /** Индикатор деления на 0
+     *  @return boolean
+     */
     public boolean isZero() {
         return divideByZero;
     }
 
+    /** Конструктор по умолчанию
+     */
     public Model() {}    
 
+    /** Конструктор класса Model
+     * @param numbers
+     * @param symbols
+     */
     public Model(List<String> numbers, List<String> symbols) {
         this.numbers = numbers;
         this.symbols = symbols;
@@ -37,8 +49,18 @@ public class Model {
         this.divideByZero = false;
     }    
 
+    /* Объявление объекта родительского класса BaseMath
+     * для использования дочерними классами
+     */
     BaseMath operands;
 
+    /** Метод определяет количество операндов в выражении и
+     * инициализирует объект класса BaseMath конструктором
+     * подходящего дочернего класса.
+     * Возвращает флаг деления на 0
+     * @return boolean isZero()
+     * Если значение флага true - происходит попытка деления на 0.
+     */
     public boolean count() {
         switch (size()) {
             case 2:
@@ -64,6 +86,11 @@ public class Model {
         return isZero();
     }
     
+    /** Метод выбирает нужные математические действия,
+     * производит проверку деления на 0, отправляет
+     * запрос на вычисления. Результат вычислений
+     * помещается в поле приватное result.
+     */
     public void operation() {
         for (String string : getSymbols()) {
             switch (string) {
