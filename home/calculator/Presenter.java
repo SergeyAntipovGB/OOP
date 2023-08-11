@@ -1,28 +1,51 @@
 package home.calculator;
 
-public class Presenter {
+public class Presenter implements Phrases {
     private Model model;
     private View view;
+
+    Exit exit = new Exit();
 
     public Presenter(Model model, View view) {
         this.model = model;
         this.view = view;
     }
 
+    /** Метод класса Presenter запрашивает действие и обрабатывает
+     * результат
+     */
     public void requestExpression() {
-        String expression = view.getRequestExpression();
-        // Exception exception = new Exception();
+        String expression = view.getRequest(REQUEST_EXPRESSION);
         if (isNumber(expression)) {
             int numberOfExpression = Integer.parseInt(expression);
             if (numberOfExpression > 0 & numberOfExpression < 5) {
                 performeExpression(numberOfExpression);
-            }
-        }
+            }else
+                view.displayAlert(ALERT_ILLEGAL_NUMBER);
+        }else
+            view.displayAlert(ALERT_NOT_NUMBER);
+        if (!exit.isExit()) requestExpression();
     }
     
-    private boolean isNumber(String s) {
+    /** Метод класса Presenter запрашивает действие и обрабатывает
+     * результат
+     */
+    public void requestOperation() {
+        String operation = view.getRequest(REQUEST_OPERATION);
+
+
+        
+    }
+
+
+    /** Метод проверяет строку на возможность преобразования
+     * в целое число
+     * @param String string
+     * @return Boolean
+     */
+    private boolean isNumber(String string) {
         try {
-            Integer.parseInt(s);
+            Integer.parseInt(string);
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -32,21 +55,24 @@ public class Presenter {
     public void performeExpression(int position) {
         switch (position) {
             case 1:
-                // model.add(num1, num2);
+                view.clearScreen();
+                view.displayAlert(HELP);
                 break;
             case 2:
-                // model.subtract(num1, num2);
+                requestOperation();
+
                 break;
             case 3:
-                // model.multiply(num1, num2);
+                view.clearScreen();
+                view.displayAlert(HELP);
                 break;
             case 4:
-                // model.divide(num1, num2);
+                view.clearScreen();
+                view.displayAlert(END);
+                view.clearScreen();
+                exit.onExit();
                 break;
-            default:
-                System.out.println("Некорректная операция!");
         }
-        view.displayResult(model.getResult());
     }
 
     // public void requestOperation() {
