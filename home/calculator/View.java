@@ -27,8 +27,10 @@ public class View {
         scanner.nextLine();
     }
 
-    public void displayResult(double result) {
-        System.out.printf("\nРезультат: %.2f\n", result);
+    public void displayResult(String operation, double result) {
+        clearScreen();
+        System.out.printf("%s = %.2f\n",operation, result);
+        scanner.nextLine();
     }
 
     /** Метод класса View выводит на экран меню программы, запрашивает

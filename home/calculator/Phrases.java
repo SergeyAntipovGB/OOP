@@ -9,9 +9,11 @@ public interface Phrases {
         "4 завершить работу и выйти из программы.\n" +
         "Введите соответствующий номер пункта > ";
         
-    public static String HELP = "Пока ничего нет (\n";
+    public static String HELP = "Здесь пока ничего нет (\n";
+
+    public static String LOG = HELP;
         
-    public static String LOG = "Чтобы вернуться в меню нажмите <Enter>\n";
+    public static String PRESS_ENT = "Чтобы вернуться в меню нажмите <Enter>\n";
         
     public static String END = "Работа программы завершена!\n" +
         "нажмите клавишу <Enter> ";
@@ -20,12 +22,18 @@ public interface Phrases {
     
     public static String ALERT_NOT_NUMBER = "Вы ввели неверное значение" +
         " или пустую строку.\n" +
-        LOG;
+        PRESS_ENT;
     
     public static String ALERT_ILLEGAL_NUMBER = "Такого пункта меню не " +
         "существует\n" +
-        LOG;
+        PRESS_ENT;
+        
+    public static String ALERT_DIV_BY_ZERO = "Делить на 0 нельзя!\n" +
+        PRESS_ENT;
     
-
+    public static String RESULT = " = ";
+    
+    public static String ALERT_LOOSE_OPERAND = "Не достаточно данных!\n" +
+        PRESS_ENT;
 
 }

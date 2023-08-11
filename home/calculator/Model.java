@@ -37,36 +37,55 @@ public class Model {
         this.divideByZero = false;
     }    
 
-    public void count() {
+    BaseMath operands;
+
+    public boolean count() {
         switch (size()) {
             case 2:
-                
+                operands = new TwoOperands(
+                    Double.parseDouble(getNumbers().get(0)),
+                    Double.parseDouble(getNumbers().get(1))
+                );
+                operation();
                 break;
+            /** можно реализовать вычисления 3 и более операндов 
+            *   используя наследование класса BaseMath
+            case 3:
+                operands = new ThreeOperands(
+                    Double.parseDouble(getNumbers().get(0)),
+                    Double.parseDouble(getNumbers().get(1)),
+                    Double.parseDouble(getNumbers().get(2))
+                );
+                operation();
+                break;*/
             default:
                 break;
         }
+        return isZero();
     }
     
     public void operation() {
         for (String string : getSymbols()) {
             switch (string) {
                 case "+":
-                    TwoOperands.add(Double.parseDouble(getNumbers().get(0)), Double.parseDouble(getNumbers().get(1)));
-                    result = TwoOperands.getResult();
+                    operands.add();
                     break;
                 case "-":
-                    ;
+                    operands.subtract();
                     break;
                 case "*":
-                    ;
+                    operands.multiply();
                     break;
                 case "/":
-                    ;
-                    break;
-                default:
-                    System.out.println("Некорректная операция!");
+                    if (Double.parseDouble(getNumbers().get(1)) == 0) {
+                        divideByZero = true;
+                        break;
+                    }else {
+                        operands.divide();
+                        break;
+                    }
             }
-            result;
+            result += operands.getResult();;
         }
     }
     

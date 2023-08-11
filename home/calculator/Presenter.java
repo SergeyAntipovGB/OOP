@@ -23,7 +23,7 @@ public class Presenter implements Phrases {
      */
     public void requestExpression() {
         String expression = view.getRequest(REQUEST_EXPRESSION);
-        if (isNumber(expression)) {
+        if (isInteger(expression)) {
             int numberOfExpression = Integer.parseInt(expression);
             if (numberOfExpression > 0 & numberOfExpression < 5) {
                 performeExpression(numberOfExpression);
@@ -42,13 +42,24 @@ public class Presenter implements Phrases {
         /* парсит выражение на два списка данных */
         List<String> listNumbers = getNumbers(operation);
         List<String> listSymbols = getSymbols(operation);
+        /* проверка корректности данных */
+        if (listNumbers.size() - listSymbols.size() != 1 ||
+            listSymbols.size() < 1) {
+                view.displayAlert(ALERT_LOOSE_OPERAND);
+                requestOperation();
+            }
+        for (String string : listNumbers) {
+            if (!isDouble(string)) {
+                view.displayAlert(ALERT_NOT_NUMBER);
+                requestOperation();
+            }
+        }
         /* отправляет списки на вычисление */
         Model calculate = new Model(listNumbers, listSymbols);
-
-
-        // System.out.println(listNumbers);
-        // System.out.println(listSymbols);
-        // view.displayAlert(LOG);
+        if (calculate.count()) {
+            view.displayAlert(ALERT_DIV_BY_ZERO);
+        }else
+            view.displayResult(operation, calculate.getResult());
     }
 
     /** Метод парсит полученное выражение и возвращает
@@ -93,9 +104,18 @@ public class Presenter implements Phrases {
      * @param String string
      * @return Boolean
      */
-    private boolean isNumber(String string) {
+    private boolean isInteger(String string) {
         try {
             Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    private boolean isDouble(String string) {
+        try {
+            Double.parseDouble(string);
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -125,31 +145,4 @@ public class Presenter implements Phrases {
         }
     }
 
-    // public void requestOperation() {
-    //     String operation = view.getOperation();
-    //     double num1 = view.getOperand();
-    //     double num2 = view.getOperand();
-    //     performeOperation(operation, num1, num2);
-    // }
-
-
-    // public void performeOperation(String operation, double num1, double num2) {
-    //     switch (operation) {
-    //         case "+":
-    //             model.add(num1, num2);
-    //             break;
-    //         case "-":
-    //             model.subtract(num1, num2);
-    //             break;
-    //         case "*":
-    //             model.multiply(num1, num2);
-    //             break;
-    //         case "/":
-    //             model.divide(num1, num2);
-    //             break;
-    //         default:
-    //             System.out.println("Некорректная операция!");
-    //     }
-    //     view.displayResult(model.getResult());
-    // }
 }
