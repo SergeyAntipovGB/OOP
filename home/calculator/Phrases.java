@@ -9,9 +9,13 @@ public interface Phrases {
         "4 завершить работу и выйти из программы.\n" +
         "Введите соответствующий номер пункта > ";
         
-    public static String HELP = "Здесь пока ничего нет (\n";
+    public static String HELP = "В калькуляторе можно вводить " +
+        "выражения целиком.\nДопускается разделение пробелами.\n" +
+        "например:\n\t\t3.0-1.5\n\t\t8.4 / 2\n" +
+        "Целая часть отделяется от дробной ТОЧКОЙ!\n" +
+        "После ввода выражения нажать <Enter>";
 
-    public static String LOG = HELP;
+    public static String LOG = "Здесь пока ничего нет (\n";
         
     public static String PRESS_ENT = "Чтобы вернуться в меню нажмите <Enter>\n";
         

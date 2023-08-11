@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Presenter implements Phrases {
-    private Model model;
+    private Model calculate;
     private View view;
 
     /** Переменная - флаг для завершения программы.
@@ -13,8 +13,12 @@ public class Presenter implements Phrases {
      */
     Exit exit = new Exit();
 
+    /** Конструктор класса Presenter
+     * @param model
+     * @param view
+     */
     public Presenter(Model model, View view) {
-        this.model = model;
+        this.calculate = model;
         this.view = view;
     }
 
@@ -46,16 +50,16 @@ public class Presenter implements Phrases {
         if (listNumbers.size() - listSymbols.size() != 1 ||
             listSymbols.size() < 1) {
                 view.displayAlert(ALERT_LOOSE_OPERAND);
-                requestOperation();
+                requestExpression();
             }
         for (String string : listNumbers) {
             if (!isDouble(string)) {
                 view.displayAlert(ALERT_NOT_NUMBER);
-                requestOperation();
+                requestExpression();
             }
         }
         /* отправляет списки на вычисление */
-        Model calculate = new Model(listNumbers, listSymbols);
+        calculate = new Model(listNumbers, listSymbols);
         if (calculate.count()) {
             view.displayAlert(ALERT_DIV_BY_ZERO);
         }else
@@ -113,6 +117,11 @@ public class Presenter implements Phrases {
         }
     }
 
+    /** Метод проверяет соответствие строчных данных
+     * типу double
+     * @param string
+     * @return boolean
+     */
     private boolean isDouble(String string) {
         try {
             Double.parseDouble(string);
@@ -122,6 +131,9 @@ public class Presenter implements Phrases {
         }
     }
 
+    /** Метод обработки пунктов меню
+     * @param position
+     */
     public void performeExpression(int position) {
         switch (position) {
             case 1:
@@ -130,11 +142,10 @@ public class Presenter implements Phrases {
                 break;
             case 2:
                 requestOperation();
-
                 break;
             case 3:
                 view.clearScreen();
-                view.displayAlert(HELP);
+                view.displayAlert(LOG);
                 break;
             case 4:
                 view.clearScreen();
